@@ -64,18 +64,23 @@ def main():
             operator = input("Please enter the operator: + - ^ * /\n")
 
         num1 = input("Please enter first operand\n")
-        num2 = input("Please enter second operand\n")
-
         # checks if the numbers are valid or not
-        if (check_negative(num1) or check_positive(num1)) and (check_negative(num2) or check_positive(num2)):
-            num1 = float(num1)
-            num2 = float(num2)
+        while not (check_negative(num1) or check_positive(num1)):
+            print("The number isn't valid")
+            num1 = input("Please enter first operand\n")
 
-            # prints the result
-            result = FUNCTIONS[operator](num1, num2)
-            print("The result of", num1, operator, num2, "is", result)
-        else:
-            print("The numbers aren't valid")
+        num2 = input("Please enter second operand\n")
+        while not (check_negative(num2) or check_positive(num2)):
+            print("The number isn't valid")
+            num2 = input("Please enter first operand\n")
+
+        # casting to float because int can be float but float can't be int
+        num1 = float(num1)
+        num2 = float(num2)
+
+        # prints the result
+        result = FUNCTIONS[operator](num1, num2)
+        print("The result of", num1, operator, num2, "is", result)
 
         print("------------------------------")
         exit_while = input("If you want to quit press q, else press any other key and then enter\n")
